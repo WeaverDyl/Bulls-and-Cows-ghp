@@ -3,10 +3,85 @@
     <head>        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+       
         <title>Bulls and Cows</title>
     </head>
     
     <body>
+        <div class="container text-center">
+            <h1 class="display-3 text-center">Bulls and Cows</h1>
+                <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#instructions">How to Play</button>
+    
+                <div class="collapse mb-3" id="instructions">
+                    <div class="card card-body">
+                        RULES GO HERE
+                    </div>
+                </div>
 
+            <table class="table">
+                <thead>
+                    <th scope="col">Attempt #</th>
+                    <th scope="col">Your Guess</th>
+                    <th scope="col">Result</th>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td id="guess-1"></td>
+                        <td id="result-1"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">2</th>
+                        <td id="guess-2"></td>
+                        <td id="result-2"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">3</th>
+                        <td id="guess-3"></td>
+                        <td id="result-3"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">4</th>
+                        <td id="guess-4"></td>
+                        <td id="result-4"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">5</th>
+                        <td id="guess-5"></td>
+                        <td id="result-5"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">6</th>
+                        <td id="guess-6"></td>
+                        <td id="result-6"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">7</th>
+                        <td id="guess-7"></td>
+                        <td id="result-7"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">8</th>
+                        <td id="guess-8"></td>
+                        <td id="result-8"></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     </body>
 </html>
