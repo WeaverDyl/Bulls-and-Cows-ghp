@@ -9,22 +9,23 @@
         <title>Bulls and Cows</title>
     </head>
     
-    <body>
+    <body style="background-color: #f6f6f6">
         <div class="container text-center">
             <h1 class="display-3 text-center">Bulls and Cows</h1>
-                <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#instructions">How to Play</button>
+                <button class="btn btn-primary mb-3 mr-5" data-toggle="collapse" data-target="#instructions">How to Play</button>
+                <button class="btn btn-primary mb-3 ml-5" id="new-game-btn">New Game</button>
     
                 <div class="collapse mb-3" id="instructions">
-                    <div class="card card-body">
+                    <div class="card card-body" style="background-color: #f6f6f6">
                         RULES GO HERE
                     </div>
                 </div>
 
             <table class="table">
                 <thead>
-                    <th scope="col">Attempt #</th>
-                    <th scope="col">Your Guess</th>
-                    <th scope="col">Result</th>
+                    <th style="width: 33.33%" scope="col">Attempt #</th>
+                    <th style="width: 33.33%" scope="col">Your Guess</th>
+                    <th style="width: 33.33%" scope="col">Result</th>
                 </thead>
                 
                 <tbody>
@@ -77,8 +78,19 @@
                     </tr>
                 </tbody>
             </table>
-            
 
+            <div class="mt-5 mb-5" id="results">
+                <h3 id="result-msg"></h3>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-sm-6 offset-sm-3">
+                    <label class="lead font-weight-bold" for="user-guess">Make a Guess:</label>
+                    <input class="form-control text-center mt-2 mb-2" id="user-guess" type="text" placeholder="1234">
+                    <button class="btn btn-primary mt-2" id="submit-guess-btn">Submit Guess</button>
+                </div>
+            </div>
+            
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
