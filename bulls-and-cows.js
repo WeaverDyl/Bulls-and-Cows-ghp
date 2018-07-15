@@ -140,6 +140,7 @@ function validGuess(guess) {
 function newGame() {
     clearTable(); // Remove all previous elements from the game table.
     $('#result-msg').html("");
+    $('#user-guess').val("");
 
     // Generate a new number and reset all variables.
     secret = pickRandomNumber();
