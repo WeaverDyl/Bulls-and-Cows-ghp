@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-            <table class="table">
+            <table id="bc-table" class="table">
                 <thead>
                     <th style="width: 33.33%" scope="col">Attempt #</th>
                     <th style="width: 33.33%" scope="col">Your Guess</th>
@@ -86,7 +86,7 @@
             <div class="form-group row">
                 <div class="col-sm-6 offset-sm-3">
                     <label class="lead font-weight-bold" for="user-guess">Make a Guess:</label>
-                    <input class="form-control text-center mt-2 mb-2" id="user-guess" type="text" placeholder="1234">
+                    <input class="form-control text-center mb-2" id="user-guess" type="text" placeholder="1234" autocomplete="off">
                     <button class="btn btn-primary mt-2" id="submit-guess-btn">Submit Guess</button>
                 </div>
             </div>
@@ -95,5 +95,6 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+        <script src="bulls-and-cows.js"></script>
     </body>
 </html>
