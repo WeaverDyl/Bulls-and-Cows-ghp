@@ -78,10 +78,11 @@ function zip(arrays) {
 }
 
 /**
+ * Takes in the secret number and a guessed number and returns how many bulls
+ * and cows the guess contains.
  * 
- * 
- * @param {*} secret 
- * @param {*} guess 
+ * @param {number} secret - The secret number
+ * @param {number} guess - The user's guessed number
  * @returns {Array} returns an array conforming to [# of bulls, # of cows]. 
  */
 function checkGuess(secret, guess) {
@@ -90,26 +91,33 @@ function checkGuess(secret, guess) {
     var secretDict = {};
     var guessDict = {};
 
+    // Convert the secret/guess numbers to arrays (1234 => [1,2,3,4])
     var secretToArray = secret.toString(10).split("").map(function(t){return parseInt(t)});
     var guessToArray = guess.toString(10).split("").map(function(t){return parseInt(t)});
 
+    // Zip the two arrays ([1,2,3,4], [5,6,7,8] => [[1,5],[2,6],[3,7],[4,8]])
     var secretGuessZip = secretToArray.map(function(e, i) {
         return [e, guessToArray[i]];
     });
     
+    // Go through each digit and compare the secret to the guess
     for (var i = 0; i < secretToArray.length; i++) {
         var secretElem = secretGuessZip[i][0];
         var guessElem = secretGuessZip[i][1];
 
+        // If the two digits each, then that's a bull
         if (secretElem === guessElem) {
             bull += 1;
         } else {
+            // Otherwise, increment the number of occurences of the digits
             secretDict[secretElem] = (secretDict[secretElem] || 0) + 1
             guessDict[guessElem] = (guessDict[guessElem] || 0) + 1
         } 
     }
 
 
+    // Calculate the number of cows by taking the minimum count of digit occurences
+    // to avoid double counting bulls and cows
     for (var key in guessDict) {
         cow += Math.min(guessDict[key], (secretDict[key] || 0))
     }
@@ -130,7 +138,8 @@ function validGuess(guess) {
  * Resets the game table and all variables to start a new game.
  */
 function newGame() {
-    clearTable() // Remove all previous elements from the game table.
+    clearTable(); // Remove all previous elements from the game table.
+    $('#result-msg').html("");
 
     // Generate a new number and reset all variables.
     secret = pickRandomNumber();
