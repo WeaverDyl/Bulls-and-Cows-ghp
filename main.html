@@ -3,9 +3,7 @@
     <head>        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-       
         <title>Bulls and Cows</title>
     </head>
     
@@ -17,7 +15,18 @@
     
                 <div class="collapse mb-3" id="instructions">
                     <div class="card card-body" style="background-color: #f6f6f6">
-                        RULES GO HERE
+                        <p class="lead">
+                            You have to guess a 4-digit secret number that is automatically generated.
+                            </br></br>
+                            After you guess, you will be told how many digits from your number are in the correct place (bulls),
+                            and how many digits from your number are in the wrong place, but are still in the secret number (cows).
+                            </br></br>
+                            Digits from the secret number can be repeated (1123 would be a valid secret number, for example).
+                            </br></br>
+                            You win if you get 4 bulls within 8 attempts.
+                            </br>
+                            Good luck!
+                        </p>
                     </div>
                 </div>
 
@@ -86,7 +95,7 @@
             <div class="form-group row">
                 <div class="col-sm-6 offset-sm-3">
                     <label class="lead font-weight-bold" for="user-guess">Make a Guess:</label>
-                    <input class="form-control text-center mb-2" id="user-guess" type="text" placeholder="1234" autocomplete="off">
+                    <input class="form-control text-center mb-2" id="user-guess" type="text" placeholder="Example: 1234" autocomplete="off">
                     <button class="btn btn-primary mt-2" id="submit-guess-btn">Submit Guess</button>
                 </div>
             </div>

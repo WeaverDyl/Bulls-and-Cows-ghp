@@ -4,38 +4,43 @@ var won = false; // True if player has guessed the secret number, else false
 var lost = false; // True if player is out of attempts, false otherwise
 
 $(document).ready(function() {
-    newGame();
+    newGame(); // Automatically start a game on page load.
 
     // Handle guessing
     $('#submit-guess-btn').click(function() {
-        // Don't let user continue playing current game if they won already
+        var guess = $('#user-guess').val(); // The user's guess
+
+        // Don't let user continue playing current game if they won already.
         if (won === true) {
-            $('#result-msg').html(`You already won! Please start a new game by 
-            selecting the 'New Game' button!`);
+            $('#result-msg').html(`You already won! The secret number was ${secret}.</br>
+                Please start a new game by selecting the 'New Game' button!`);
             return;
         }
+        // Don't let user continue playing current game if they lost already.
         if (lost === true) {
-            $('#result-msg').html(`You already lost! 
-            Please start a new game by selecting the 'New Game' button!`);
+            $('#result-msg').html(`You already lost! The secret number was ${secret}.</br>
+                Please start a new game by selecting the 'New Game' button!`);
             return;
         }
 
-        var guess = $('#user-guess').val();
+        // Check that the user's guess is valid (a 4-digit number).
         if (validGuess(guess)) {
-            $('#result-msg').html('');
-            var result = checkGuess(secret, guess)
+            $('#result-msg').html(''); // Clear any previous result messages.
+            var result = checkGuess(secret, guess) // Check the user's guess
             var bulls = result[0];
             var cows = result[1];
 
             $('#guess-' + currentAttempt).text($('#user-guess').val()); // Put the user's guess in the table
-            $('#result-' + currentAttempt).text(`${bulls} Bulls; ${cows} Cows`); // Put the results in the table
+            $('#result-' + currentAttempt).text(`${bulls} Bull(s); ${cows} Cow(s)`); // Put the results in the table
+            $('#user-guess').val(""); // Clear the guess field so user don't double submit by mistake
             currentAttempt += 1;
+            
             
             // User wins if bulls is 4 (which means cows is 0)
             if (bulls === 4) {
                 won = true;
-                $('#result-msg').html(`You win! Please start a new game by 
-                    selecting the 'New Game' button!`);
+                $('#result-msg').html(`You win! The secret number was ${secret}.</br>
+                    Please start a new game by selecting the 'New Game' button!`);
                 return;
             }
 
@@ -46,11 +51,12 @@ $(document).ready(function() {
                 return;
             }
         } else {
-            // Guess wasn't valid, so let user know, and don't count as attempt
+            // The guess wasn't valid, so let user know, and don't count as attempt.
             $('#result-msg').html('Invalid guess! Please enter a 4 digit number.');
         }
     });
 
+    // Start a new game if the user clicked the `new game` button.
     $('#new-game-btn').click(function() {
         newGame()
     });
@@ -58,11 +64,14 @@ $(document).ready(function() {
 
 
 /**
+ * Zips arrays together so you can compare their corresponding elements.
  * 
  * Thanks to https://stackoverflow.com/questions/4856717/javascript-equivalent-of-pythons-zip-function
- * @param {*} arrays 
+ * @param {...Array} arrays - Any number of arrays to be zipped together 
+ * @returns {Array} The zipped together arrays
  */
 function zip(arrays) {
+    // ZIP ZIP ZIP
     return Array.apply(null,Array(arrays[0].length)).map(function(_,i){
         return arrays.map(function(array){return array[i]})
     });
@@ -70,8 +79,10 @@ function zip(arrays) {
 
 /**
  * 
+ * 
  * @param {*} secret 
  * @param {*} guess 
+ * @returns {Array} returns an array conforming to [# of bulls, # of cows]. 
  */
 function checkGuess(secret, guess) {
     var bull = 0;
@@ -107,15 +118,16 @@ function checkGuess(secret, guess) {
 }
 
 /**
- * Returns true if the argument is a 4 digit number, false otherwise.
+ * Checks if the user's guess is a 4-digit number
  * @param {*} guess - The user's input for the game
+ * @returns {boolean} true if the argument is a 4 digit number, false otherwise.
  */
 function validGuess(guess) {
     return /^\d{4}$/.test(guess)
 }
 
 /**
- * Resets the webpage and all variables to make a new game.
+ * Resets the game table and all variables to start a new game.
  */
 function newGame() {
     clearTable() // Remove all previous elements from the game table.
@@ -128,11 +140,12 @@ function newGame() {
 }
 
 /**
- * 
+ * Clears any previous guesses and results from the game table.
  */
 function clearTable() {
     var tableLength = $('#bc-table tr').length;
 
+    // Clear the `guess` and `result` columns of the game table.
     for (var i = 0; i < tableLength; i++) {
         $('#guess-' + i).text("");
         $('#result-' + i).text("");
@@ -140,7 +153,8 @@ function clearTable() {
 }
 
 /**
- * 
+ * Generates a random 4-digit number.
+ * @returns {number} The random number that was generated
  */
 function pickRandomNumber() {
     var min = 1000; // The current minimum value for 4-digit b&c
